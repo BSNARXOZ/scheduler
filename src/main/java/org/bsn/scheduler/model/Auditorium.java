@@ -3,6 +3,7 @@ package org.bsn.scheduler.model;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,8 +28,10 @@ public class Auditorium {
     private Integer capacity;
     private AuditoriumType type;
 
-    @PostConstruct
-    public void init() {
-        this.id = UUID.randomUUID();
+    @PrePersist
+    public void prePersist() {
+        if (this.id == null) {
+            this.id = UUID.randomUUID();
+        }
     }
 }
