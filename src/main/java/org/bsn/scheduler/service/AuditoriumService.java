@@ -26,7 +26,7 @@ public class AuditoriumService {
     }
 
     public Auditorium update(AuditoriumRequest request, UUID id) {
-        Auditorium auditorium = auditoriumMapper.toEntity(request);
+        Auditorium auditorium = findById(id);
         auditorium.setId(id);
         return auditoriumRepository.save(auditorium);
     }

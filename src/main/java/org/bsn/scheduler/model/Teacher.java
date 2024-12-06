@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.bsn.scheduler.enums.Faculty;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -36,6 +37,8 @@ public class Teacher {
             inverseJoinColumns = @JoinColumn(name = "discipline_id")
     )
     private Set<Discipline> disciplines = new HashSet<>();
+
+    private Faculty faculty;
 
     @PrePersist
     public void prePersist() {
